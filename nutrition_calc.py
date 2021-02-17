@@ -9,18 +9,19 @@ try:
 	height_in_cm = float(input("Enter height in cm: "))
 except:
 	print("Sorry, invalid entry. Please enter a value for height")
-	height_in_cm = float(input("Try again - Enter height in cm: "))	
+	height_in_cm = float(input("Try again - Enter height in cm: "))
 
-# convert height in cm to m
-height_in_m = height_in_cm / 100
+# create a BMI Class that caculates BMI = weight / height^2, rounding to one decimal place
+class Bmi:
 
-# calculate BMI (weight / height^2), rounding to one decimal place
-bmi =  weight / (height_in_m ** 2)
-bmi_rounded = round(bmi,1)
+	def __init__(self):
+		self.height_converted = height_in_cm / 100
 
-print("BMI: {} kg/m^2".format(bmi_rounded))
+	def calc_bmi(self):
+		bmi =  weight / (self.height_converted ** 2)
+		return round(bmi,1)
 
-# input for gender and calculate IBW and percent IBW for male and female
+# create IBW Class
 while True:
 	gender = input("Enter male or female: ").lower()
 	if gender == 'male':
@@ -46,13 +47,24 @@ while True:
 		continue
 	break
 
+# Energy needs based on BMI and %IBW
+# if BMI < = 29.9 and IBW <= 130%, use 30-35 kcal/kg
 
-# if BMI < = 24.9 and IBW <= 130%, use 30-35 kcal/kg, 1.2-1.5 g/kg, 45-65% of kcal in g CHO/day, and 1 mL/kcal
+# if BMI 25 - 29.9 and IBW >= 130%, use 25-30 kcal/kg
+
+# if BMI > = 30 and IBW > 130%, use 20-25 kcal/kg
 
 
-# if BMI 25 - 29.9 and IBW <= 130%, use 30-35 kcal/kg, 1.2-1.5 g/kg, 45-65% of kcal in g CHO/day, and 1 mL/kcal
+# Protein needs based on BMI and %IBW
+# if BMI < = 29.9 and IBW <= 130%, 1.2-1.5 g/kg
+# if BMI 25 - 29.9 and IBW >= 130%, 1.1-1.4 g/kg
+# if BMI > = 30 and IBW > 130%, 1.5-2 g/kg IBW,
 
-# if BMI 25 - 29.9 and IBW >= 130%, use 25-30 kcal/kg, 1.1-1.4 g/kg, 45-65% of kcal in g CHO/day, and 1 mL/kcal
+# CHO needs based on energy needs, 45-65% of kcal in g CHO/day
 
-# if BMI > = 30 and IBW > 130%, use 20-25 kcal/kg, 1.5-2 g/kg IBW, 45-65% of kcal in g CHO/day, and 1 mL/kcal
+# Fluid needs based on energy needs, 1 mL/kcal
+
+# Calc setup
+
+# print 
 
