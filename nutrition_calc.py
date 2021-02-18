@@ -1,46 +1,37 @@
-# input for weight in kg and height in cm
+# input for getting weight and height info
 try:
 	weight = float(input("Enter weight in kg: "))
 except:
 	print("Sorry, invalid entry. Please enter a value for weight")	
 	weight = float(input("Try again - Enter weight in kg: "))
-
 try:
 	height_in_cm = float(input("Enter height in cm: "))
 except:
 	print("Sorry, invalid entry. Please enter a value for height")
 	height_in_cm = float(input("Try again - Enter height in cm: "))
 
-# create a BMI Class that caculates BMI = weight / height^2, rounding to one decimal place
-class Bmi:
+# convert height to meter and calculate BMI = weight / height^2, rounding to one decimal place
+height_in_m = height_in_cm / 100
 
-	def __init__(self):
-		self.height_converted = height_in_cm / 100
+bmi =  round(weight / (height_in_m ** 2),1)
+print("BMI: {} kg/m^2".format(bmi))
 
-	def calc_bmi(self):
-		bmi =  weight / (self.height_converted ** 2)
-		return round(bmi,1)
-
-# create IBW Class
+# calculate IBW and %IBW for male vs. female
 while True:
 	gender = input("Enter male or female: ").lower()
 	if gender == 'male':
-		ibw_male = 50 + (0.9 * (height_in_cm - 152))
-		ibw_male_rounded = round(ibw_male,1)
-		print("IBW: {} kg".format(ibw_male_rounded))
+		ibw_male = round(50 + (0.9 * (height_in_cm - 152)),1)
+		print("IBW: {} kg".format(ibw_male))
 
-		percent_ibw_male = (weight / ibw_male_rounded) * 100
-		percent_ibw_male_rounded = round(percent_ibw_male)
-		print("Percent IBW: {}%".format(percent_ibw_male_rounded))
+		percent_ibw_male = round((weight / ibw_male) * 100)
+		print("Percent IBW: {}%".format(percent_ibw_male))
 
 	elif gender == 'female':
-		ibw_female = 45.5 + (0.9 * (height_in_cm - 152))
-		ibw_female_rounded = round(ibw_female,1)
-		print("IBW: {} kg".format(ibw_female_rounded))
+		ibw_female = round(45.5 + (0.9 * (height_in_cm - 152)),1)
+		print("IBW: {} kg".format(ibw_female))
 
-		percent_ibw_female = (weight / ibw_female_rounded) * 100
-		percent_ibw_female_rounded = round(percent_ibw_female)
-		print("Percent IBW: {}%".format(percent_ibw_female_rounded))
+		percent_ibw_female = round((weight / ibw_female) * 100)
+		print("Percent IBW: {}%".format(percent_ibw_female))
 
 	else: 
 		print('Sorry, invalid entry. Please enter "male" or "female".')
@@ -48,12 +39,48 @@ while True:
 	break
 
 # Energy needs based on BMI and %IBW
-# if BMI < = 29.9 and IBW <= 130%, use 30-35 kcal/kg
+def energy_calc():
+	kcal15 = round(weight * 15)
+	kcal20 = round(weight * 20)
+	kcal25 = round(weight * 25)
+	kcal30 = round(weight * 30)
+	kcal35 = round(weight * 35)
+	
+	if gender == 'male':
+		try:
+			if bmi <= 24.9 and percent_ibw_male < 130:
+				print("Estimated energy needs: {}-{} kcal/day".format(kcal30,kcal35))
+			elif bmi >=25 and bmi <=29.9 and percent_ibw_male <= 130:
+				print("Estimated energy needs: {}-{} kcal/day".format(kcal30,kcal35))
+			elif bmi >=25 and bmi <=29.9 and percent_ibw_male >= 130:
+				print("Estimated energy needs: {}-{} kcal/day".format(kcal25,kcal30))
+			elif bmi >=30 and bmi <=34.9: 
+				print("Estimated energy needs: {}-{} kcal/day".format(kcal20,kcal25))
+			elif bmi >=35 and bmi <=39.9: 
+				print("Estimated energy needs: {}-{} kcal/day".format(kcal15,kcal20))
+			else:
+				print("BMI>40, unable to provide estimated energy needs")
+		except:
+			print("Unable to provide estimated energy needs")
 
-# if BMI 25 - 29.9 and IBW >= 130%, use 25-30 kcal/kg
+	elif gender == 'female':
+		try:
+			if bmi <= 24.9 and percent_ibw_female < 130:
+				print("Estimated energy needs: {}-{} kcal/day".format(kcal30,kcal35))
+			elif bmi >=25 and bmi <=29.9 and percent_ibw_female <= 130:
+				print("Estimated energy needs: {}-{} kcal/day".format(kcal30,kcal35))
+			elif bmi >=25 and bmi <=29.9 and percent_ibw_female >= 130:
+				print("Estimated energy needs: {}-{} kcal/day".format(kcal25,kcal30))
+			elif bmi >=30 and bmi <=34.9: 
+				print("Estimated energy needs: {}-{} kcal/day".format(kcal20,kcal25))
+			elif bmi >=35 and bmi <=39.9: 
+				print("Estimated energy needs: {}-{} kcal/day".format(kcal15,kcal20))
+			else:
+				print("BMI>40, unable to provide estimated energy needs")
+		except:
+			print("Unable to provide estimated energy needs")
 
-# if BMI > = 30 and IBW > 130%, use 20-25 kcal/kg
-
+energy_calc()
 
 # Protein needs based on BMI and %IBW
 # if BMI < = 29.9 and IBW <= 130%, 1.2-1.5 g/kg
@@ -66,5 +93,7 @@ while True:
 
 # Calc setup
 
-# print 
+# Call
+
+# 
 
