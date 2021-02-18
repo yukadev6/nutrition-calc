@@ -83,17 +83,10 @@ def energy_calc():
 energy_calc()
 
 # Protein needs based on BMI and %IBW
-# if BMI < = 29.9 and IBW <= 130%, 1.2-1.5 g/kg
-# if BMI 25 - 29.9 and IBW >= 130%, 1.1-1.4 g/kg
-# if BMI > = 30 and IBW > 130%, 1.5-2 g/kg IBW,
 
 # CHO needs based on energy needs, 45-65% of kcal in g CHO/day
 
 # Fluid needs based on energy needs, 1 mL/kcal
 
-# Calc setup
-
-# Call
-
-# 
+ 
 
