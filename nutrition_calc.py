@@ -67,7 +67,7 @@ def energy_calc():
 		try:
 			if bmi <= 24.9 and percent_ibw_female < 130:
 				print("Estimated energy needs: {}-{} kcal/day".format(kcal30,kcal35))
-			elif bmi >=25 and bmi <=29.9 and percent_ibw_female <= 130:
+			elif bmi >=25 and bmi <=29.9 and percent_ibw_female < 130:
 				print("Estimated energy needs: {}-{} kcal/day".format(kcal25,kcal30))
 			elif bmi >=25 and bmi <=29.9 and percent_ibw_female >= 130:
 				print("Estimated energy needs: {}-{} kcal/day".format(kcal20,kcal25))
@@ -90,39 +90,39 @@ def protein_calc():
 	gram1_4 = round(weight * 1.4)
 	gram1_5 = round(weight * 1.5)
 	
-if gender == 'male':
+	if gender == 'male':
+		gram1_5ibwmale = round(ibw_male * 1.5)
+		gram2_0ibwmale = round(ibw_male * 2)
 		try:
 			if bmi <= 24.9 and percent_ibw_male < 130:
 				print("Estimated protein needs: {}-{} g/day".format(gram1_2,gram1_5))
 			elif bmi >=25 and bmi <=29.9 and percent_ibw_male < 130:
 				print("Estimated protein needs: {}-{} g/day".format(gram1_2,gram1_4))
 			elif bmi >=25 and bmi <=29.9 and percent_ibw_male >= 130:
+			 	print("Estimated protein needs: {}-{} g/day".format(gram1_1,gram1_3))
+			elif bmi >=30 and bmi <=39.9: 
+				print("Estimated protein needs: {}-{} g/day".format(gram1_5ibwmale,gram2_0ibwmale))
+			else:
+			 	print("BMI>40, unable to provide estimated protein needs")
+		except:
+			print("Unable to provide estimated protein needs")
+
+	elif gender == 'female':
+		gram1_5ibwfemale = round(ibw_female * 1.5)
+		gram2_0ibwfemale = round(ibw_female * 2)
+		try:
+			if bmi <= 24.9 and percent_ibw_female < 130:
+				print("Estimated protein needs: {}-{} g/day".format(gram1_2,gram1_5))
+			elif bmi >=25 and bmi <=29.9 and percent_ibw_female < 130:
+				print("Estimated protein needs: {}-{} g/day".format(gram1_2,gram1_4))
+			elif bmi >=25 and bmi <=29.9 and percent_ibw_female >= 130:
 				print("Estimated protein needs: {}-{} g/day".format(gram1_1,gram1_3))
-			# elif bmi >=30 and bmi <=39.9: 
-			# 	gram1_5ibwm = round(ibw_male * 1.5)
-			# 	gram2_0ibwm = round(ibw_male * 2)
-			# 	print("Estimated protein needs: {}-{} g/day".format(gram1_5ibwm,gram2_0ibwm))
+			elif bmi >=30 and bmi <=39.9: 
+				print("Estimated protein needs: {}-{} g/day".format(gram1_5ibwfemale,gram2_0ibwfemale))
 			else:
 				print("BMI>40, unable to provide estimated protein needs")
 		except:
 			print("Unable to provide estimated protein needs")
-
-# elif gender == 'female':
-# 		try:
-# 			if bmi <= 24.9 and percent_ibw_female < 130:
-# 				print("Estimated protein needs: {}-{} g/day".format(gram1_2,gram1_5))
-# 			elif bmi >=25 and bmi <=29.9 and percent_ibw_female < 130:
-# 				print("Estimated protein needs: {}-{} g/day".format(gram1_2,gram1_4))
-# 			elif bmi >=25 and bmi <=29.9 and percent_ibw_female >= 130:
-# 				print("Estimated protein needs: {}-{} g/day".format(gram1_1,gram1_3))
-# 			# elif bmi >=30 and bmi <=39.9: 
-# 			# 	gram1_5ibwf = round(ibw_female * 1.5)
-# 			# 	gram2_0ibwf = round(ibw_female * 2)
-# 			# 	print("Estimated protein needs: {}-{} g/day".format(gram1_5ibwf,gram2_0ibwf))
-# 			else:
-# 				print("BMI>40, unable to provide estimated protein needs")
-# 		except:
-# 			print("Unable to provide estimated protein needs")
 
 protein_calc()
 
