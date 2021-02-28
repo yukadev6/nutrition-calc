@@ -10,12 +10,6 @@ except:
 	print("Sorry, invalid entry. Please enter a value for height")
 	height_in_cm = float(input("Try again - Enter height in cm: "))
 
-# convert height to meter and calculate BMI (weight / height^2), rounding to one decimal place
-height_in_m = height_in_cm / 100
-
-bmi =  round(weight / (height_in_m ** 2),1)
-print("BMI: {} kg/m^2".format(bmi))
-
 # calculate IBW and %IBW for male vs. female
 while True:
 	gender = input("Enter male or female: ").lower()
@@ -37,6 +31,12 @@ while True:
 		print('Sorry, invalid entry. Please enter "male" or "female".')
 		continue
 	break
+
+# convert height to meter and calculate BMI (weight / height^2), rounding to one decimal place
+height_in_m = height_in_cm / 100
+
+bmi =  round(weight / (height_in_m ** 2),1)
+print("BMI: {} kg/m^2".format(bmi))
 
 # Energy needs calculated based on BMI and %IBW, separate for male and female.
 # Fluid needs calculated based on energy needs, 1 mL/kcal
