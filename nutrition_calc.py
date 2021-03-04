@@ -1,4 +1,4 @@
-# input for getting weight and height info
+# Input for getting weight and height info
 try:
 	weight = float(input("Enter weight in kg: "))
 except:
@@ -10,7 +10,7 @@ except:
 	print("Sorry, invalid entry. Please enter a value for height")
 	height_in_cm = float(input("Try again - Enter height in cm: "))
 
-# calculate IBW and %IBW for male vs. female
+# Calculate IBW and %IBW for male vs. female
 while True:
 	gender = input("Enter male or female: ").lower()
 	if gender == 'male':
@@ -32,7 +32,7 @@ while True:
 		continue
 	break
 
-# convert height to meter and calculate BMI (weight / height^2), rounding to one decimal place
+# Convert height to meter and calculate BMI (weight / height^2), rounding to one decimal place
 height_in_m = height_in_cm / 100
 
 bmi =  round(weight / (height_in_m ** 2),1)
@@ -137,29 +137,29 @@ def protein_calc():
 
 protein_calc()
 
-# CHO needs calculated based on a percentage of energy needs, 45-65% of kcal, converted to g/day
-def cho_calc():
-	kcal15_cho45 = round(((weight * 15) * .45)/4)
-	kcal15_cho65 = round(((weight * 15) * .65)/4)
-	kcal20_cho45 = round(((weight * 20) * .45)/4)
-	kcal20_cho65 = round(((weight * 20) * .65)/4)
-	kcal25_cho45 = round(((weight * 25) * .45)/4)
-	kcal25_cho65 = round(((weight * 25) * .65)/4)
-	kcal30_cho45 = round(((weight * 30) * .45)/4)
-	kcal30_cho65 = round(((weight * 30) * .65)/4)
+# Carbohydrate needs calculated based on 45-65% of energy needs and converted to g/day
+def carb_calc():
+	kcal15_carb45 = round(((weight * 15) * .45)/4)
+	kcal15_carb65 = round(((weight * 15) * .65)/4)
+	kcal20_carb45 = round(((weight * 20) * .45)/4)
+	kcal20_carb65 = round(((weight * 20) * .65)/4)
+	kcal25_carb45 = round(((weight * 25) * .45)/4)
+	kcal25_carb65 = round(((weight * 25) * .65)/4)
+	kcal30_carb45 = round(((weight * 30) * .45)/4)
+	kcal30_carb65 = round(((weight * 30) * .65)/4)
 
 	if gender == 'male':
 		try:
 			if bmi <= 24.9 and percent_ibw_male < 130:
-				print("Estimated carbohydrate needs: {}-{} g/day (45-65% kcal)".format(kcal30_cho45,kcal30_cho65))
+				print("Estimated carbohydrate needs: {}-{} g/day (45-65% kcal)".format(kcal30_carb45,kcal30_carb65))
 			elif bmi >=25 and bmi <=29.9 and percent_ibw_male < 130:
-				print("Estimated carbohydrate needs: {}-{} g/day (45-65% kcal)".format(kcal25_cho45,kcal25_cho65))
+				print("Estimated carbohydrate needs: {}-{} g/day (45-65% kcal)".format(kcal25_carb45,kcal25_carb65))
 			elif bmi >=25 and bmi <=29.9 and percent_ibw_male >= 130:
-				print("Estimated carbohydrate needs: {}-{} g/day (45-65% kcal)".format(kcal20_cho45,kcal20_cho65))
+				print("Estimated carbohydrate needs: {}-{} g/day (45-65% kcal)".format(kcal20_carb45,kcal20_carb65))
 			elif bmi >=30 and bmi <=34.9: 
-				print("Estimated carbohydrate needs: {}-{} g/day (45-65% kcal)".format(kcal20_cho45,kcal20_cho65))
+				print("Estimated carbohydrate needs: {}-{} g/day (45-65% kcal)".format(kcal20_carb45,kcal20_carb65))
 			elif bmi >=35 and bmi <=39.9: 
-				print("Estimated carbohydrate needs: {}-{} g/day (45-65% kcal)".format(kcal15_cho45,kcal15_cho65))
+				print("Estimated carbohydrate needs: {}-{} g/day (45-65% kcal)".format(kcal15_carb45,kcal15_carb65))
 			else:
 				print("BMI>40, unable to provide estimated carbohydrate needs")
 		except:
@@ -168,18 +168,18 @@ def cho_calc():
 	elif gender == 'female':
 		try:
 			if bmi <= 24.9 and percent_ibw_female < 130:
-				print("Estimated carbohydrate needs: {}-{} g/day (45-65% kcal)".format(kcal30_cho45,kcal30_cho65))
+				print("Estimated carbohydrate needs: {}-{} g/day (45-65% kcal)".format(kcal30_carb45,kcal30_carb65))
 			elif bmi >=25 and bmi <=29.9 and percent_ibw_female < 130:
-				print("Estimated carbohydrate needs: {}-{} g/day (45-65% kcal)".format(kcal25_cho45,kcal25_cho65))
+				print("Estimated carbohydrate needs: {}-{} g/day (45-65% kcal)".format(kcal25_carb45,kcal25_carb65))
 			elif bmi >=25 and bmi <=29.9 and percent_ibw_female >= 130:
-				print("Estimated carbohydrate needs: {}-{} g/day (45-65% kcal)".format(kcal20_cho45,kcal20_cho65))
+				print("Estimated carbohydrate needs: {}-{} g/day (45-65% kcal)".format(kcal20_carb45,kcal20_carb65))
 			elif bmi >=30 and bmi <=34.9: 
-				print("Estimated carbohydrate needs: {}-{} g/day (45-65% kcal)".format(kcal20_cho45,kcal20_cho65))
+				print("Estimated carbohydrate needs: {}-{} g/day (45-65% kcal)".format(kcal20_carb45,kcal20_carb65))
 			elif bmi >=35 and bmi <=39.9: 
-				print("Estimated carbohydrate needs: {}-{} g/day (45-65% kcal)".format(kcal15_cho45,kcal15_cho65))
+				print("Estimated carbohydrate needs: {}-{} g/day (45-65% kcal)".format(kcal15_carb45,kcal15_carb65))
 			else:
 				print("BMI>40, unable to provide estimated carbohydrate needs")
 		except:
 			print("Unable to provide estimated carbohydrate needs")
 	
-cho_calc()
+carb_calc()
