@@ -10,7 +10,7 @@ except:
 	print("Sorry, invalid entry. Please enter a value for height")
 	height_in_cm = float(input("Try again - Enter height in cm: "))
 
-# Calculate IBW and %IBW for male vs. female
+# Calculate Ideal Body Weight(IBW) and %IBW for male vs. female
 while True:
 	gender = input("Enter male or female: ").lower()
 	if gender == 'male':
@@ -65,9 +65,9 @@ def energy_fluid_calc():
 				print("Estimated energy needs: {}-{} kcal/day (15-20 kcal/kg)".format(kcal15,kcal20))
 				print("Estimated fluid needs: {}-{} mL/day (1 mL/kcal)".format(kcal15,kcal20))
 			else:
-				print("BMI>40, unable to provide estimated energy needs")
+				print("BMI>40, unable to provide estimated energy and fluid needs")
 		except:
-			print("Unable to provide estimated energy needs")
+			print("Unable to provide estimated energy and fluid needs")
 
 	elif gender == 'female':
 		try:
@@ -87,9 +87,9 @@ def energy_fluid_calc():
 				print("Estimated energy needs: {}-{} kcal/day (15-20 kcal/kg)".format(kcal15,kcal20))
 				print("Estimated fluid needs: {}-{} mL/day (1 mL/kcal)".format(kcal15,kcal20))
 			else:
-				print("BMI>40, unable to provide estimated energy needs")
+				print("BMI>40, unable to provide estimated energy and fluid needs")
 		except:
-			print("Unable to provide estimated energy needs")
+			print("Unable to provide estimated energy and fluid needs")
 
 energy_fluid_calc()
 
