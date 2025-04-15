@@ -9,7 +9,7 @@ It's not perfect and the logic behind the actual calculations are a work in prog
 
 How to run the Nutrition Calculator
 1. Make sure to have the latest verson of Python installed
-2. Open the nutrition_calc.py file in this repo and select "download" or use shortcut, 'command + shift + s'
-3. Open terminal and navigate to the downloads folder where the nutrition_calc.py file is saved (cd ~/Downloads)
+2. Open the nutrition_calc.py file in this repo and select "download"
+3. Open terminal and navigate to the downloads folder where the nutrition_calc.py file is saved
 4. Run the Nutrition Calculator by running "python nutrition_calc.py" in terminal
 5. Follow the prompts for user input to get output for estimatined energy, fluid, protein, and carbohydrate needs.
